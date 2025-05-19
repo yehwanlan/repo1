@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab02</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Hierachy Selector</h1>
+    </header>
+    <div class="container">
+        <div id="div">
+            <p>child p
+                <a>aaa</a>
+            </p>
+            <div>
+                <p> desceant p</p>
+                <p> desceant p</p>
+            </div>
+            <p>child p</p>
+        </div>
+        <p>next p</p>
+        <p>sibling p</p>
+        <hr>
+        <button id='gt'>div>p</button>
+        <button id='space'>div p</button>
+        <button id='plus'>div+p</button>
+        <button id='wave'>div~p</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // code
+            $('#gt').on('click', function () {
+                $('#div>p').css('background', 'pink');
+            })
+            $('#space').on('click', function () {
+                $('#div p').css('background', 'yellow');
+            })
+            $('#plus').on('click', function () {
+                $('#div+p').css('background', 'purple');
+            })
+            $('#wave').on('click', function () {
+                $('#div~p').css('background', 'red');
+            })
+        })
+    </script>
+</body>
+
+</html>

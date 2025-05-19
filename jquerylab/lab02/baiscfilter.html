@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab02</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Basic Filter</h1>
+    </header>
+    <div class="container">
+        <ul>
+            <li>list</li>
+            <li id="list">list</li>
+            <li class="list">list</li>
+            <li>list</li>
+            <li class="not">list</li>
+        </ul>
+        <ul>
+            <li>list</li>
+            <li id="list">list</li>
+            <li class="list">list</li>
+            <li>list</li>
+            <li class="not">list</li>
+        </ul>
+        <ul>
+            <li></li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum non aspernatur at ad, deserunt molestias, eos
+            blanditiis consequuntur quas cum quod aperiam et facere, quidem suscipit ea. Et, ut dignissimos.</p>
+        <p>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea enim, aut eos ipsa asperiores excepturi
+            minus
+            aperiam, repellat vel, neque voluptate autem officia corrupti esse. Magnam illo esse dolorum nesciunt?</p>
+        <p><span>FUEN49</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione a in officiis earum
+            saepe labore iste
+            magni. Placeat, rem repellat eos vero quidem dolorum modi esse ipsa repellendus minus aut?</p>
+        <p></p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // code
+            // basic filter
+            console.log($('*'));
+            console.log($('h1'));
+            console.log($('#list'));
+            console.log($('.list'));
+            console.log($('h1,li'));
+            // 選擇器filter
+            // eq(n) n從0開始
+            // $('li:eq(1)').css('background', 'pink');
+            // // lt 索引值小於3
+            // $('li:lt(3)').css('background', 'lightgreen');
+            // // gt 索引值大於3
+            // $('li:gt(3)').css('background', 'lightblue');
+            // // not
+            // $('li:not(.not)').css('background', 'yellow');
+
+            // 內文選擇器 content filter
+            $('p:contains("Hello")').css('background', 'pink');
+            $('p:has(span)').css('background', 'yellow');
+            $('p:empty').text('empty text');
+            $('p:parent').css('background', 'red');
+
+            // 子元素選擇器 child filter
+            // $('li:first-child').css('background', 'pink');
+            // $('li:last-child').css('background', 'pink');
+            // // nth-child(n) n從1開始
+            // $('li:nth-child(1)').css('background', 'red');
+            // $('li:only-child').css('background', 'blue');
+
+            // filtering
+            $('li').eq(1).css('background', 'pink');
+
+            // index() 取出元素索引值
+            $('li').on('mouseenter', function () {
+                console.log($(this).index());
+            })
+
+        })
+    </script>
+</body>
+
+</html>
