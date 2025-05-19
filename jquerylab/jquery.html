@@ -19,40 +19,45 @@
 
 <body>
     <header>
-        <h1>jquery</h1>
+        <h1>jQuery + JavaScript Hover Demo</h1>
     </header>
+
     <div class="container">
-        <h3 id="target">jquery</h3>
-        <h3>javascript 1</h3>
-        <h3>javascript 2</h3>
-        <h3>javascript 3</h3>
+        <!-- ✅ 原生 JavaScript 控制區 -->
+        <h3>JavaScript 1</h3>
+        <h3>JavaScript 2</h3>
+        <h3>JavaScript 3</h3>
+
+        <!-- ✅ jQuery 控制區 -->
+        <h3 class="jq-item">jQuery 1</h3>
+        <h3 class="jq-item">jQuery 2</h3>
+        <h3 class="jq-item">jQuery 3</h3>
     </div>
 
-    <!-- jQuery 放在所有 <script> 最上面 -->
+    <!-- jQuery 先載入 -->
     <script src="../jquery-3.7.1.min.js"></script>
 
-    <!-- jQuery 特別控制 target 會變粉送色字體-->
+    <!-- ✅ 原生 JS 控制上面三行 hover 背景變色 -->
     <script>
-        $('#target').on('mouseenter', function () {
-            $(this).css('color', 'pink');
-        });
-        $('#target').on('mouseleave', function () {
-            $(this).css('color', 'black');
-        });
-    </script>
-
-    <!-- 原生 JS 控制所有 h3 hover 背景變色 -->
-    <script>
-        const headers = document.querySelectorAll("h3");
-
+        const headers = document.querySelectorAll(".container h3:nth-child(-n+3)");
         headers.forEach(h3 => {
             h3.addEventListener("mouseover", function () {
                 h3.classList.add("highlight");
             });
-
             h3.addEventListener("mouseout", function () {
                 h3.classList.remove("highlight");
             });
+        });
+    </script>
+
+    <!-- ✅ jQuery 控制下面三行 hover 字體顏色變紅，滑開變回黑色 -->
+    <script>
+        $(".jq-item").on("mouseenter", function () {
+            $(this).css("color", "red");
+        });
+
+        $(".jq-item").on("mouseleave", function () {
+            $(this).css("color", "black");
         });
     </script>
 </body>
