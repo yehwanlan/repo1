@@ -127,6 +127,9 @@
             <button id="nextAllBtn">nextAll()</button>
             <button id="prevAllBtn">prevAll()</button>
             <button id="siblingsBtn">siblings()</button>
+            <button id="leftBtn">左邊一格</button>
+            <button id="rightBtn">右邊一格</button>
+            <button id="downBtn">下方一格</button>
             <button id="resetBtn">Reset</button>
         </div>
     </div>
@@ -136,40 +139,49 @@
         $(function () {
             let mode = "";
 
-            $('#nextAllBtn').on('click', function () {
-                mode = "next";
-            });
-
-            $('#prevAllBtn').on('click', function () {
-                mode = "prev";
-            });
-
-            $('#siblingsBtn').on('click', function () {
-                mode = "siblings";
-            });
-
-            $('#resetBtn').on('click', function () {
-                $('td').css('background', ''); // 清除背景色
+            // 切換不同模式
+            $('#nextAllBtn').on('click', () => mode = "next");
+            $('#prevAllBtn').on('click', () => mode = "prev");
+            $('#siblingsBtn').on('click', () => mode = "siblings");
+            $('#leftBtn').on('click', () => mode = "left");
+            $('#rightBtn').on('click', () => mode = "right");
+            $('#downBtn').on('click', () => mode = "down");
+            $('#resetBtn').on('click', () => {
+                $('td').css('background', '');
                 mode = "";
             });
 
+            // 點 td 根據模式執行
             $('td').on('click', function () {
+                const currentTd = $(this);
+
                 if (mode === "next") {
-                    $(this).nextAll().css('background', 'lightblue');
+                    currentTd.nextAll().css('background', 'lightblue');
                 } else if (mode === "prev") {
-                    $(this).prevAll().css('background', 'lightgreen');
+                    currentTd.prevAll().css('background', 'lightgreen');
                 } else if (mode === "siblings") {
-                    $(this).siblings().css('background', 'orange');
+                    currentTd.siblings().css('background', 'orange');
+                } else if (mode === "left") {
+                    currentTd.prev().css('background', 'lightcoral');
+                } else if (mode === "right") {
+                    currentTd.next().css('background', 'gold');
+                } else if (mode === "down") {
+                    const colIndex = currentTd.index();
+                    const nextRow = currentTd.parent().next();
+                    if (nextRow.length > 0) {
+                        nextRow.children().eq(colIndex).css('background', 'violet');
+                    }
                 }
             });
 
-            // 額外 box click 功能
+            // 額外互動功能
             $('.box').on('click', function () {
                 $(this).parent().parent().css('background', 'pink');
             });
 
-            $('td').on('click', function () {
-                $(this).find('.box2').css('background', 'blue');
+            $('.box2').on('click', function (e) {
+                e.stopPropagation(); // 防止冒泡到 td
+                $(this).css('background', 'blue');
             });
         });
     </script>
