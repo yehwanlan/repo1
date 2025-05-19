@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab05</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        div.out {
+            height: 250px;
+            width: 40%;
+            margin: 0 15px;
+            background-color: lightgreen;
+            float: left;
+        }
+
+        div.in {
+            width: 60%;
+            height: 60%;
+            background-color: lightblue;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Mouse Event</h1>
+    </header>
+    <div class="container">
+        <button id="btn">Btn</button>
+        <hr>
+        <div class="out overout">
+            <span>move your mouse</span>
+            <div class="in"></div>
+        </div>
+        <div class="out enterleave">
+            <span>move your mouse</span>
+            <div class="in"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // code
+            // 不常用 
+            $('#btn').dblclick(function () {
+                console.log('double click');
+            })
+            // 不常用 
+            $('#btn').contextmenu(function () {
+                console.log('right click');
+            })
+            $('#btn').mouseup(function () {
+                console.log('mouse up')
+            })
+
+            // mouseover mouseout
+            let countOverout = 0;
+            $('div.overout').mouseover(function () {
+                countOverout += 1;
+                $(this).find('span').text(`mouse over:${countOverout}`);
+            })
+
+            // mouseenter mouseleave
+            let countEnterleave = 0;
+            $('div.enterleave').mouseenter(function () {
+                countEnterleave += 1;
+                $(this).find('span').text(`mouse enter:${countEnterleave}`);
+            })
+
+            // mousemove 
+            // over + out
+
+            // hover 偽事件 
+            // $('#btn').hover(function () {
+            //     console.log('123');
+            // })
+
+            // hover不會運作它不是javascript原生事件
+            $('#bnt').on('hover', function () {
+                console.log('123');
+            })
+
+        })
+    </script>
+</body>
+
+</html>

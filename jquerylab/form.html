@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab07</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Form</h1>
+    </header>
+    <div class="container">
+        <input type="text" id="input">
+        <div>
+            <input type="text" maxlength="4" class="card-input">
+            <input type="text" maxlength="4" class="card-input">
+            <input type="text" maxlength="4" class="card-input">
+            <input type="text" maxlength="4" class="card-input">
+        </div>
+        <div class="div" style="display: inline-block;">
+            <input type="text" maxlength="4" class="card-input2">
+        </div>
+        <div class="div" style="display: inline-block;">
+            <input type="text" maxlength="4" class="card-input2">
+        </div>
+        <div class="div" style="display: inline-block;">
+            <input type="text" maxlength="4" class="card-input2">
+        </div>
+        <div class="div" style="display: inline-block;">
+            <input type="text" maxlength="4" class="card-input2">
+        </div>
+        <hr>
+        <label for="">
+            身分證字號:
+            <input type="text" id="twId">
+            <div id="twIdMsg"></div>
+        </label>
+        <label for="">
+            密碼:
+            <input type="text">
+            <div></div>
+            <ul>
+                <li>密碼不可為空白</li>
+                <li>密碼必須超過6個字</li>
+                <li>密碼必須包含英文</li>
+                <li>密碼必須包含數字</li>
+                <li>密碼必須包含特殊字元[!@#$%^&*]</li>
+            </ul>
+        </label>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // code
+            // focus
+            $('#input').focus(function () {
+                console.log('focus');
+            })
+            // blur
+            $('#input').blur(function () {
+                console.log('blur');
+            })
+            // focus()
+            // card
+            $('.card-input').keyup(function () {
+                console.log($(this).val().length);
+                if ($(this).val().length == 4) {
+                    $(this).next().focus();
+                }
+            })
+            // card2
+            $('.card-input2').keyup(function () {
+                if ($(this).val().length == 4) {
+                    $(this).parent().next().find('.card-input2').focus();
+                }
+            })
+
+            // RegExp()
+            // 身分證驗證
+            $('#twId').blur(function () {
+                console.log($(this).val());
+                let content = $(this).val();
+                let regexpTwId = new RegExp(/^[A-Z]{1}[0189]{1}[0-9]{8}$/);
+                if (regexpTwId.test(content)) {
+                    $('#twIdMsg').text('正確');
+                } else {
+                    $('#twIdMsg').text('錯誤');
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

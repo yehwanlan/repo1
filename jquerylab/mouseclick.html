@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>區分單擊與雙擊</title>
+    <style>
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn">點我</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        let clickTimer;
+
+        $('#btn').on('click', function () {
+            // 先清除前一次的 clickTimer（避免誤觸雙擊）
+            clearTimeout(clickTimer);
+
+            // 開始一個 300ms 延遲，等看看會不會是雙擊
+            clickTimer = setTimeout(() => {
+                alert("你點了一下！");
+            }, 300);
+        });
+
+        $('#btn').on('dblclick', function () {
+            // 雙擊的話，馬上取消單擊的定時器
+            clearTimeout(clickTimer);
+            alert("你雙擊了按鈕！");
+        });
+
+        $('#btn').on('mouseenter', function () {
+            $(this).css('background-color', 'lightgreen');
+        });
+
+        $('#btn').on('mouseleave', function () {
+            $(this).css('background-color', '');
+        });
+        $('#btn').on('mousedown', function () {
+            $(this).text("🖱️ 按下去了！");
+            $(this).css('background-color', 'orange');
+        });
+
+        $('#btn').on('mouseup', function () {
+            $(this).text("🖱️ 放開了！");
+            $(this).css('background-color', 'lightblue');
+        });
+
+        $('#btn').hover(
+            function () { $(this).text("滑進來啦") },
+            function () { $(this).text("點我") }
+        );
+    </script>
+</body>
+
+</html>

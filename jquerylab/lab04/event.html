@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab04</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        #div {
+            width: 300px;
+            height: 100px;
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        p {
+            background-color: lightcoral;
+        }
+
+        span {
+            background-color: lightgreen;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Event</h1>
+    </header>
+    <div class="container">
+        <button id="btn">btn</button>
+        <hr>
+        <div id="div">
+            div element
+            <p>p element
+                <span>
+                    span element
+                </span>
+            </p>
+        </div>
+        <a href="https://api.jquery.com/">jQuery.com</a>
+        <div class="target"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // code
+            $('#btn').click(function (event) {
+                console.log('123');
+                console.log(event.type);
+                console.log(event.which);
+                // event.keyCode
+                console.log(event);
+            })
+
+            // stopPropagation()取消氣泡事件
+            $('#div').click(function () {
+                console.log(`div element was clicked`);
+            })
+            $('p').click(function (event) {
+                event.stopPropagation();
+                console.log(`p element was clicked`);
+            })
+            $('span').click(function (event) {
+                console.log(`span element was clicked`);
+            })
+
+            // preventDefault()取消預設事件
+            $('a').click(function (event) {
+                event.preventDefault();
+                $('.target').text(`default ${event.type} prevented`);
+            })
+        })
+    </script>
+</body>
+
+</html>
