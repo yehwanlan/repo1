@@ -6,3 +6,6 @@
 filter使用
 階層式選擇器 html階層 樹狀圖
 5/19下午
+find/children/parent/closest/nextALL
+ 圈圈置中justify-content: center;
+好好笑 老師說對於圈圈沒在中間 有前端的潛力xDD

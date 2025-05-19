@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab03</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        table {
+            border: 2px solid black;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+
+        table tr td {
+            border: 1px solid black;
+        }
+
+        td {
+            width: 90px;
+            height: 90px;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: pink;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box2 {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: lightgreen;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tree Traversal</h1>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="box">
+                        <div class="box2"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <div class="buttons">
+            <button id="nextAllBtn">nextAll()</button>
+            <button id="prevAllBtn">prevAll()</button>
+            <button id="siblingsBtn">siblings()</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            let mode = "";
+
+            $('#nextAllBtn').on('click', function () {
+                mode = "next";
+            });
+
+            $('#prevAllBtn').on('click', function () {
+                mode = "prev";
+            });
+
+            $('#siblingsBtn').on('click', function () {
+                mode = "siblings";
+            });
+
+            $('#resetBtn').on('click', function () {
+                $('td').css('background', ''); // 清除背景色
+                mode = "";
+            });
+
+            $('td').on('click', function () {
+                if (mode === "next") {
+                    $(this).nextAll().css('background', 'lightblue');
+                } else if (mode === "prev") {
+                    $(this).prevAll().css('background', 'lightgreen');
+                } else if (mode === "siblings") {
+                    $(this).siblings().css('background', 'orange');
+                }
+            });
+
+            // 額外 box click 功能
+            $('.box').on('click', function () {
+                $(this).parent().parent().css('background', 'pink');
+            });
+
+            $('td').on('click', function () {
+                $(this).find('.box2').css('background', 'blue');
+            });
+        });
+    </script>
+</body>
+
+</html>
