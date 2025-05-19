@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            transition: color 0.3s, background-color 0.3s;
+            padding: 5px;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>jquery</h1>
+    </header>
+    <div class="container">
+        <h3 id="target">jquery</h3>
+        <h3>javascript 1</h3>
+        <h3>javascript 2</h3>
+        <h3>javascript 3</h3>
+    </div>
+
+    <!-- jQuery 放在所有 <script> 最上面 -->
+    <script src="../jquery-3.7.1.min.js"></script>
+
+    <!-- jQuery 特別控制 target 會變粉送色字體-->
+    <script>
+        $('#target').on('mouseenter', function () {
+            $(this).css('color', 'pink');
+        });
+        $('#target').on('mouseleave', function () {
+            $(this).css('color', 'black');
+        });
+    </script>
+
+    <!-- 原生 JS 控制所有 h3 hover 背景變色 -->
+    <script>
+        const headers = document.querySelectorAll("h3");
+
+        headers.forEach(h3 => {
+            h3.addEventListener("mouseover", function () {
+                h3.classList.add("highlight");
+            });
+
+            h3.addEventListener("mouseout", function () {
+                h3.classList.remove("highlight");
+            });
+        });
+    </script>
+</body>
+
+</html>
