@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab01</title>
+
+    <style>
+        body {
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aqua;
+        }
+
+        header {
+            background-color: black;
+            color: aquamarine;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 10px;
+            background-color: brown;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>javascript</h1>
+    </header>
+
+    <!-- ✅ 修正 class 名稱 -->
+    <div class="container" id="myBox"></div>
+
+    <script>
+        const box = document.getElementById("myBox");
+
+        box.addEventListener("mouseover", function () {
+            box.style.backgroundColor = "white";
+        });
+
+        box.addEventListener("mouseout", function () {
+            box.style.backgroundColor = "brown";
+        });
+    </script>
+
+    <h3>javascript</h3>
+</body>
+
+</html>
