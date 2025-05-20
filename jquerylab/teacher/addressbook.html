@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lab11</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         body {
             font-size: 17px;
@@ -43,6 +44,9 @@
     <header>
         <h1>AddressBook</h1>
     </header>
+    <button>
+        <i class="fa-solid fa-cart-shopping"></i> 加入購物車
+    </button>
     <div class="container">
         <div>
             <input type="text" id="name" placeholder="請輸入姓名">
@@ -76,7 +80,7 @@
                             <td>${name}</td>
                             <td>${phone}</td>
                             <td>${address}</td>
-                            <td><button class="deleteBtn">Delete</button></td>
+                            <td><button class="deleteBtn">            <i class="fa-solid fa-trash"></i></button></td>
                         </tr>
                     `;
                     //上面每次新增row時都會新增一個new_delete_BTN
