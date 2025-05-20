@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>留言板 - 使用者名稱版</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        #messageBoard {
+            border: 1px solid #ccc;
+            padding: 15px;
+            min-height: 200px;
+            margin-top: 15px;
+            background-color: #f9f9f9;
+        }
+
+        .msg {
+            padding: 5px;
+            margin: 5px 0;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+        }
+
+        .msg strong {
+            color: #00796b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>留言板</h2>
+
+    <input type="text" id="userName" placeholder="請輸入您的名稱" size="20" />
+    <br><br>
+    <input type="text" id="userInput" placeholder="請輸入留言內容" size="40" />
+    <br><br>
+    <button id="btnAppend">新增留言到下方</button>
+    <button id="btnPrepend">新增留言到上方</button>
+
+    <div id="messageBoard">
+        <!-- 留言會出現在這裡 -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        function createMessage(name, text) {
+            return `<div class="msg"><strong>${name}:</strong> ${text}</div>`;
+        }
+
+        $('#btnAppend').on('click', function () {
+            const name = $('#userName').val().trim();
+            const text = $('#userInput').val().trim();
+            if (name && text) {
+                $('#messageBoard').append(createMessage(name, text));
+                $('#userInput').val('');
+            }
+        });
+
+        $('#btnPrepend').on('click', function () {
+            const name = $('#userName').val().trim();
+            const text = $('#userInput').val().trim();
+            if (name && text) {
+                $('#messageBoard').prepend(createMessage(name, text));
+                $('#userInput').val('');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

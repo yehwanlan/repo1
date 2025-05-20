@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab11</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        table {
+            width: 500px;
+            border: 2px solid black;
+            text-align: center;
+            margin: 5px;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AddressBook</h1>
+    </header>
+    <div class="container">
+        <div>
+            <input type="text" id="name" placeholder="請輸入姓名">
+            <input type="text" id="phone" placeholder="請輸入電話">
+            <input type="text" id="address" placeholder="請輸入地址">
+            <button id="addBtn">add</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $('#addBtn').on('click', function () {
+                const name = $('#name').val().trim();
+                const phone = $('#phone').val().trim();
+                const address = $('#address').val().trim();
+
+                if (name && phone && address) {
+                    const newRow = `
+                        <tr>
+                            <td>${name}</td>
+                            <td>${phone}</td>
+                            <td>${address}</td>
+                            <td><button class="deleteBtn">Delete</button></td>
+                        </tr>
+                    `;
+                    //上面每次新增row時都會新增一個new_delete_BTN
+                    $('tbody').append(newRow);
+
+                    // 清空輸入欄位
+                    $('#name, #phone, #address').val('');
+                } else {
+                    alert("請完整填寫所有欄位！");
+                }
+            });
+
+            // 使用事件委派處理動態生成的 deleteBtn
+            $('tbody').on('click', '.deleteBtn', function () {
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+</body>
+
+</html>

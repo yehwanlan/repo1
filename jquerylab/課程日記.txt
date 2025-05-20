@@ -8,7 +8,7 @@ filter使用
 5/19下午
 find/children/parent/closest/nextALL
  圈圈置中justify-content: center;
-好好笑 老師說對於圈圈沒在中間 有前端的潛力xDD
+好好笑 老師說對於圈圈沒在中間會有強迫症的 有前端的潛力xDD
 event.type/which  event.keyCode
 mouse event=> double click / right click
 keyCode keyup keydwon
@@ -21,3 +21,7 @@ scrollLeft scrollTop 拉動卷軸獲取高度寬度
 拉動卷軸 獲取頁面進度條(泛科學網頁)
 常見按鈕 "回到頂端"
 計算機
+5/20下午
+append/prepend 聊天室新增聊天紀錄到最下方 
+新增加入刪除 使用者資料 尚缺修改
+.trim 去除輸入的左右空白
