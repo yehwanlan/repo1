@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>2048 Mini</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 30px;
+            background: #f2f2f2;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            gap: 10px;
+            margin: 0 auto;
+            width: max-content;
+        }
+
+        .tile {
+            width: 100px;
+            height: 100px;
+            background-color: #cdc1b4;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .tile-2 {
+            background-color: #eee4da;
+            color: #776e65;
+        }
+
+        .tile-4 {
+            background-color: #ede0c8;
+            color: #776e65;
+        }
+
+        .tile-8 {
+            background-color: #f2b179;
+            color: #f9f6f2;
+        }
+
+        /* ...後續 tile-16、32、64、128... 可持續加上 */
+    </style>
+</head>
+
+<body>
+
+    <h1>2048 Mini</h1>
+    <div id="board">
+        <div class="tile tile-2">2</div>
+        <div class="tile tile-4">4</div>
+        <div class="tile tile-8">8</div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+        <div class="tile"> </div>
+    </div>
+
+</body>
+
+</html>
