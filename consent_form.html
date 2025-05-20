@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>知情同意書</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f7f7f7;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .checkbox {
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: gray;
+      color: white;
+      cursor: not-allowed;
+    }
+    button.enabled {
+      background-color: #4CAF50;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>知情同意書</h2>
+    <p>感謝您使用本系統。在繼續之前，請閱讀以下內容並確認您已了解相關條款：</p>
+    <p>
+      我了解本系統可能會蒐集必要的個人資料，僅限於提供相關功能與服務。資料將保存在安全的環境中，且不會未經授權提供給第三方。
+    </p>
+
+    <div class="checkbox">
+      <label><input type="checkbox" id="consentCheckbox"> 我已閱讀並同意上述內容</label>
+    </div>
+
+    <button id="confirmBtn" disabled>確認</button>
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('consentCheckbox');
+    const button = document.getElementById('confirmBtn');
+
+    checkbox.addEventListener('change', function () {
+      if (checkbox.checked) {
+        button.disabled = false;
+        button.classList.add('enabled');
+      } else {
+        button.disabled = true;
+        button.classList.remove('enabled');
+      }
+    });
+  </script>
+
+</body>
+</html>

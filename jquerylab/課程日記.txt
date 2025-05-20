@@ -27,3 +27,4 @@ append/prepend 聊天室新增聊天紀錄到最下方
 .trim 去除輸入的左右空白
 font awesome cdn 
 把icon變可愛
+知情同意書 checkbox打勾後 才能confirm
