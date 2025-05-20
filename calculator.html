@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 計算機</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #calculator {
+            display: inline-block;
+            border: 2px solid #333;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>jQuery 計算機</h1>
+    <div id="calculator">
+        <input type="text" id="display" readonly>
+        <br>
+        <button class="btn">7</button>
+        <button class="btn">8</button>
+        <button class="btn">9</button>
+        <button class="btn">/</button>
+        <br>
+        <button class="btn">4</button>
+        <button class="btn">5</button>
+        <button class="btn">6</button>
+        <button class="btn">*</button>
+        <br>
+        <button class="btn">1</button>
+        <button class="btn">2</button>
+        <button class="btn">3</button>
+        <button class="btn">-</button>
+        <br>
+        <button class="btn">0</button>
+        <button class="btn">C</button>
+        <button class="btn">=</button>
+        <button class="btn">+</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let expression = "";
+
+        $(".btn").on("click", function () {
+            const value = $(this).text();
+
+            if (value === "C") {
+                expression = "";
+            } else if (value === "=") {
+                try {
+                    expression = eval(expression).toString();
+                } catch {
+                    expression = "錯誤";
+                }
+            } else {
+                expression += value;
+            }
+
+            $("#display").val(expression);
+        });
+    </script>
+
+</body>
+
+</html>

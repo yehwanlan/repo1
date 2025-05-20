@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab08</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            /* 溢出內容 */
+            overflow: auto;
+        }
+
+        .con {
+            width: 400px;
+            height: 400px;
+            background-color: lightgreen;
+        }
+
+        .progress {
+            background-color: lightgray;
+            width: 100%;
+            height: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .progress-percent {
+            background-color: lightblue;
+            height: 30px;
+            width: 0%;
+        }
+
+        body {
+            /* view height */
+            height: 300vh;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Scroll Event</h1>
+    </header>
+    <div class="container">
+        <div class="progress">
+            <div class="progress-percent"></div>
+        </div>
+        <div class="box">
+            <div class="con"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // code
+            $('.box').scroll(function () {
+                console.log(`scrollTop:${$(this).scrollTop()},scrollLeft:${$(this).scrollLeft()}`);
+            })
+
+            // progress
+            let windowHeight = $(window).height();
+            let bodyHeigth = $('body').height();
+            $(window).scroll(function () {
+                let nowScrollTop = $(this).scrollTop();
+                let progressPercent = Math.round((nowScrollTop / (bodyHeigth - windowHeight)) * 100) + "%";
+                $('.progress-percent').css('width', progressPercent);
+            })
+        })
+    </script>
+</body>
+
+</html>

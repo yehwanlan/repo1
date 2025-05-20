@@ -60,8 +60,8 @@
         </label>
         <label for="">
             密碼:
-            <input type="text">
-            <div></div>
+            <input type="text" id="password">
+            <div id="passwordMsg"></div>
             <ul>
                 <li>密碼不可為空白</li>
                 <li>密碼必須超過6個字</li>
@@ -70,6 +70,8 @@
                 <li>密碼必須包含特殊字元[!@#$%^&*]</li>
             </ul>
         </label>
+        <hr>
+        <select name="1" id=""></select>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
@@ -109,6 +111,35 @@
                 } else {
                     $('#twIdMsg').text('錯誤');
                 }
+            })
+
+            // 密碼驗證
+            $('#password').blur(function () {
+                let content = $(this).val();
+                let contentLength = $(this).val().length;
+                // console.log(content);
+                // console.log(contentLength);
+                let rule1 = new RegExp(/[a-z]/i);
+                let rule2 = new RegExp(/[0-9]/);
+                let rule3 = new RegExp(/[!@#$%^&*]/);
+                if (contentLength == 0) {
+                    $('#passwordMsg').text('密碼不可為空白');
+                } else if (contentLength < 6) {
+                    $('#passwordMsg').text('密碼必須超過六個字');
+                } else if (!rule1.test(content)) {
+                    $('#passwordMsg').text('密碼必須包含英文');
+                } else if (!rule2.test(content)) {
+                    $('#passwordMsg').text('密碼必須包含數字');
+                } else if (!rule3.test(content)) {
+                    $('#passwordMsg').text('密碼必須包含特殊字元[!@#$%^&*]');
+                } else {
+                    $('#passwordMsg').text('密碼正確');
+                }
+            })
+            //change
+            $('#select').change(function () {
+                console.log($('#select').val());
+                $('#target').text($('#select').val())
             })
         })
     </script>
