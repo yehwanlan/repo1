@@ -29,3 +29,6 @@ append/prepend 聊天室新增聊天紀錄到最下方
 font awesome cdn 
 把icon變可愛
 知情同意書 checkbox打勾後 才能confirm
+5/21 
+all checkbox打勾後 連動到標頭的checkbox打勾
+星星評分

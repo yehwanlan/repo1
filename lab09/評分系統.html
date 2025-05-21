@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>圖片版星星評分系統</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .stars {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .stars img {
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>圖片星星評分：</h2>
+    <div class="stars" id="starBox">
+        <img src="star.jpg" data-value="1" class="star">
+        <img src="star.jpg" data-value="2" class="star">
+        <img src="star.jpg" data-value="3" class="star">
+        <img src="star.jpg" data-value="4" class="star">
+        <img src="star.jpg" data-value="5" class="star">
+    </div>
+    <div id="result">目前評分：0 顆星</div>
+
+    <script>
+        let selectedRating = 0;
+
+        $('#starBox').on('mousemove', function (e) {
+            let hovered = 0;
+            $('.star').each(function () {
+                const offset = $(this).offset();
+                const width = $(this).outerWidth();
+                if (e.pageX >= offset.left && e.pageX <= offset.left + width) {
+                    hovered = parseInt($(this).data('value'));
+                }
+            });
+            updateStars(hovered, true);
+            $('#result').text(`目前評分：${hovered} 顆星`);
+        });
+
+        $('#starBox').on('mouseleave', function () {
+            updateStars(selectedRating, false);
+            $('#result').text(`目前評分：${selectedRating} 顆星`);
+        });
+
+        $('#starBox').on('contextmenu', function (e) {
+            e.preventDefault();
+            let clicked = 0;
+            $('.star').each(function () {
+                const offset = $(this).offset();
+                const width = $(this).outerWidth();
+                if (e.pageX >= offset.left && e.pageX <= offset.left + width) {
+                    clicked = parseInt($(this).data('value'));
+                }
+            });
+            selectedRating = clicked;
+            updateStars(clicked, false);
+            $('#result').text(`你已評分：${selectedRating} 顆星`);
+        });
+
+        function updateStars(rating, isHovering) {
+            $('.star').each(function (index) {
+                const imgSrc = (index < rating) ? 'chngstar.gif' : 'star.gif';
+                $(this).attr('src', imgSrc);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
