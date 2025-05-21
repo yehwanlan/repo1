@@ -29,8 +29,14 @@ append/prepend 聊天室新增聊天紀錄到最下方
 font awesome cdn 
 把icon變可愛
 知情同意書 checkbox打勾後 才能confirm
-5/21 
+5/21 上午
 all checkbox打勾後 連動到標頭的checkbox打勾
 星星評分
 透過更改星星來源 達到亮暗亮暗效果
-圖片輪播效果 記得隨著圖片變換 也跟著顯示 相對應的dots
+圖片輪播效果 記得隨著圖片變換 
+也跟著顯示 相對應的dots
+5/21下午
+inArrary/each/grep
+動畫效果 https://animista.net/
+lightbox
+jquery ajax 氣象局api

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五種不卡動畫</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            background-color: pink;
+            opacity: 1;
+            transform: none;
+        }
+
+        /* 通用動畫設定 */
+        .animate {
+            transition: all 0.5s ease;
+        }
+
+        .fade {
+            opacity: 0;
+        }
+
+        .scale {
+            transform: scale(0.1);
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+            opacity: 0;
+        }
+
+        .move {
+            transform: translateX(150px);
+            opacity: 0;
+        }
+
+        .slide {
+            height: 0px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>不卡動畫展示</h1>
+    <button onclick="play('slide')">Slide</button>
+    <button onclick="play('fade')">Fade</button>
+    <button onclick="play('scale')">Scale</button>
+    <button onclick="play('rotate')">Rotate</button>
+    <button onclick="play('move')">Move</button>
+
+    <div id="box" class="box"></div>
+
+    <script>
+        function play(type) {
+            const box = document.getElementById('box');
+            box.style.display = 'none';     // 隱藏一下
+            box.className = 'box';          // 清除所有狀態
+            void box.offsetWidth;           // 觸發重繪，保證動畫重新播放
+
+            // 強制重新啟用動畫
+            box.classList.add('animate');
+
+            // 加上對應動畫類別
+            box.classList.add(type);
+
+            // 顯示
+            box.style.display = 'block';
+
+            // 延遲一點再移除動畫 class，產生「從異常 → 回正常」的動畫效果
+            setTimeout(() => {
+                box.classList.remove(type);
+            }, 20);
+        }
+    </script>
+
+</body>
+
+</html>

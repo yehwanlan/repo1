@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab14</title>
+    <style>
+        body {
+            font-size: 17px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: black;
+            color: lightgreen;
+            padding: 20px;
+            /* 文字置中 */
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>other api</h1>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <button class="btn" data-name="大谷翔平" data-age="30" data-team="道奇">大谷翔平</button>
+        <button class="btn" data-name="Leborn James" data-age="40" data-team="Lakers">Leborn James</button>
+        <div class="target"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            // code
+            // each()
+            let arr = ['FUEN49', 'jQuery', '第三教室'];
+            $.each(arr, function (index, ele) {
+                console.log(index);
+                console.log(ele);
+            })
+            let sum = 0;
+            $('td').each(function () {
+                sum += parseInt($(this).text());
+            });
+            console.log(sum);
+
+            // inArray() 搜尋索引值
+            let arr2 = [9, 8, 7, 6, '5', '4', '3', '2', '1'];
+            console.log($.inArray(7, arr2));
+
+            // grep() 回傳依據設定條件回傳新陣列
+            let arr3 = $.grep(arr2, function (item, index) {
+                return (item % 2 == 0);
+            })
+            console.log(arr3);
+
+            // data()
+            $('.btn').click(function () {
+                let name = $(this).data('name'), age = $(this).data('age'), team = $(this).data('team');
+                $('.target').text(`${name} age is ${age} and  team is ${team}`);
+            })
+        })
+    </script>
+</body>
+
+</html>
