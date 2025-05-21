@@ -30,7 +30,8 @@
         .dots {
             position: absolute;
             bottom: 10px;
-            right: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             gap: 5px;
         }
@@ -45,7 +46,7 @@
         }
 
         .dot.active {
-            background-color: darkgray;
+            background-color: rgb(66, 65, 65);
         }
     </style>
 </head>
@@ -62,8 +63,9 @@
         const totalImages = 5;
         let currentIndex = 0;
         let interval;
+        let restartTimeout;
 
-        // 建立圖片與控制點
+        // 建立圖片與小方塊
         for (let i = 1; i <= totalImages; i++) {
             $('#carousel').prepend(`<img src="${i}.jpg" class="carousel-img ${i === 1 ? 'active' : ''}">`);
             $('.dots').append(`<div class="dot ${i === 1 ? 'active' : ''}" data-index="${i - 1}"></div>`);
@@ -79,17 +81,42 @@
             interval = setInterval(() => {
                 let nextIndex = (currentIndex + 1) % totalImages;
                 showImage(nextIndex);
-            }, 2000); // ← 每兩秒輪播
+            }, 2000);
         }
 
+        function stopCarousel() {
+            clearInterval(interval);
+            clearTimeout(restartTimeout);
+        }
+
+        function restartCarouselWithDelay() {
+            stopCarousel();
+            restartTimeout = setTimeout(() => {
+                startCarousel();
+            }, 2000); // ← 延後兩秒才繼續輪播
+        }
+
+        // 點擊小方塊：切換圖片 + 延遲重新啟動輪播
         $('.dots').on('click', '.dot', function () {
             const index = $(this).data('index');
             showImage(index);
+            restartCarouselWithDelay();
         });
 
-        // 初始化
+        // 滑鼠移上圖片時 → 暫停輪播
+        $('#carousel').on('mouseenter', function () {
+            stopCarousel();
+        });
+
+        // 滑鼠離開圖片時 → 重新啟動輪播
+        $('#carousel').on('mouseleave', function () {
+            restartCarouselWithDelay();
+        });
+
+        // 初始自動輪播
         startCarousel();
     </script>
+
 
 </body>
 

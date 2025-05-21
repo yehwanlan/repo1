@@ -33,3 +33,4 @@ font awesome cdn
 all checkbox打勾後 連動到標頭的checkbox打勾
 星星評分
 透過更改星星來源 達到亮暗亮暗效果
+圖片輪播效果 記得隨著圖片變換 也跟著顯示 相對應的dots
